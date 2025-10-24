@@ -23,7 +23,7 @@ export const Header = () => {
         >
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-xl font-bold text-white">RR GEMINI SERVICES</span>
+              <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-12 w-auto" />
             </Link>
           </div>
           <div className="flex lg:hidden">

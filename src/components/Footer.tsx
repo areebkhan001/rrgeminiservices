@@ -13,7 +13,6 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   company: [
-    { name: "RR GEMINI SERVICE", href: "#" },
     { name: "201903164676 (SA0519682-P)", href: "#" },
     { name: "No. 7, Jalan Kesum 24/37A", href: "#" },
     { name: "Seksyen 24, 40300 Shah Alam", href: "#" },
@@ -61,7 +60,9 @@ export const Footer = () => {
         <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8">
-              <span className="text-2xl font-bold text-white">RR GEMINI SERVICES</span>
+              <Link href="/" className="block">
+                <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-16 w-auto" />
+              </Link>
               <p className="text-sm leading-6 text-gray-300">
                 Your trusted partner in education, business, and retail services.
               </p>
