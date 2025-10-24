@@ -1,5 +1,5 @@
 {
-  "name": "@once-ui-system/magic-portfolio",
+  "name": "rrgeminiservices",
   "version": "2.3.0",
   "scripts": {
     "dev": "next dev",
@@ -10,19 +10,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.1.0",
-    "@next/mdx": "^15.3.1",
-    "@once-ui-system/core": "^1.4.27",
-    "classnames": "^2.5.1",
+    "@types/nodemailer": "^7.0.3",
+    "clsx": "^2.1.1",
     "cookie": "^1.0.2",
-    "gray-matter": "^4.0.3",
+    "framer-motion": "^12.23.24",
     "lint-staged": "^16.1.5",
     "next": "^15.3.1",
-    "next-mdx-remote": "^5.0.0",
+    "next-themes": "^0.4.6",
+    "nodemailer": "^7.0.10",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-icons": "^5.5.0",
     "sass": "^1.86.3",
+    "tailwind-merge": "^3.3.1",
     "transliteration": "^2.3.5"
   },
   "devDependencies": {
@@ -31,7 +31,11 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^9.25.0",
+    "eslint-config-next": "^16.0.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.0",
     "typescript": "^5.8.3",
     "tzdata": "^1.0.44"
   }
