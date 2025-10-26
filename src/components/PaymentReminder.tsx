@@ -280,7 +280,7 @@ export const PaymentReminder = ({ onClose }: PaymentReminderProps) => {
               transition={{ delay: 1.8 }}
               className="text-xs text-center text-neutral-500 mt-4"
             >
-              Contact our team for enterprise solutions and custom pricing
+              Contact Your team for enterprise solutions and custom pricing
             </motion.p>
           </motion.div>
         </motion.div>
