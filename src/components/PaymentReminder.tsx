@@ -257,7 +257,7 @@ export const PaymentReminder = ({ onClose }: PaymentReminderProps) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold py-3 px-6 rounded-lg hover:from-yellow-400 hover:to-yellow-500 transition-all duration-200 flex items-center justify-center space-x-2"
-                onClick={() => window.open('mailto:admin@firstshot.com?subject=Upgrade%20Request', '_blank')}
+                onClick={() => window.open('mailto:vercel@vercel.com?subject=Upgrade%20Request', '_blank')}
               >
                 <CreditCard className="w-4 h-4" />
                 <span>Upgrade Now</span>
