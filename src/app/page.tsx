@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Meteors, SpotlightCard } from "@/components/ui/motion";
+import { PosterGallery } from "@/components/PosterGallery";
 
 export const metadata: Metadata = {
   title: "RR Gemini Services - Business Advisory & Trading",
@@ -184,6 +185,22 @@ export default function Home() {
             </FadeIn>
           ))}
         </div>
+      </div>
+
+      {/* Work Opportunities Section */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 bg-gradient-to-b from-neutral-900/50 to-transparent">
+        <FadeIn>
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Global Work Opportunities
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Explore exciting career opportunities across Europe and beyond
+            </p>
+          </div>
+        </FadeIn>
+
+        <PosterGallery />
       </div>
     </main>
   );
