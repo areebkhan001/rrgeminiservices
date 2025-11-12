@@ -40,15 +40,15 @@ const universities = [
 
 export default function UniversitiesPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center py-24">
+    <main className="flex min-h-screen flex-col items-center py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-400">Our Network</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-base font-semibold leading-7 text-blue-600">Our Network</h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Partner Universities
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-700">
               We collaborate with over 20 leading universities in Malaysia to provide comprehensive
               education opportunities for students.
             </p>
@@ -62,11 +62,11 @@ export default function UniversitiesPage() {
               {universities.map((university, index) => (
                 <FadeIn key={university.name} delay={index * 0.1}>
                   <div className="group relative">
-                    <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg bg-gray-900/5 backdrop-blur">
+                    <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg bg-white border-2 border-blue-200 shadow-md hover:shadow-lg transition-shadow">
                       <div className="flex items-center justify-center h-full p-4">
                         <div className="relative h-48 w-48">
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-lg font-semibold text-white text-center">
+                            <span className="text-lg font-semibold text-gray-900 text-center">
                               {university.name}
                             </span>
                           </div>
@@ -75,10 +75,10 @@ export default function UniversitiesPage() {
                     </div>
                     <div className="mt-4">
                       <div className="relative">
-                        <div className="absolute -inset-x-4 -inset-y-4 z-0 scale-95 bg-zinc-50/10 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 scale-95 bg-blue-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
                         <div className="relative">
-                          <h3 className="text-sm font-medium text-white">{university.name}</h3>
-                          <p className="mt-2 text-sm text-gray-400">
+                          <h3 className="text-sm font-medium text-gray-900">{university.name}</h3>
+                          <p className="mt-2 text-sm text-gray-600">
                             Click to learn more about our partnership
                           </p>
                         </div>
@@ -94,10 +94,10 @@ export default function UniversitiesPage() {
         {/* Additional Information */}
         <FadeIn>
           <div className="mx-auto mt-32 max-w-2xl text-center">
-            <h3 className="text-xl font-bold tracking-tight text-white">
+            <h3 className="text-xl font-bold tracking-tight text-gray-900">
               Why Choose Our University Partners?
             </h3>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-700">
               Our partner universities are known for their academic excellence, modern facilities,
               and industry-focused programs. We help students find the perfect match for their
               educational goals and career aspirations.
@@ -105,11 +105,11 @@ export default function UniversitiesPage() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/contact"
-                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                className="rounded-md bg-gradient-to-r from-blue-600 to-orange-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:from-blue-500 hover:to-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
               >
                 Contact Us
               </a>
-              <a href="/services" className="text-sm font-semibold leading-6 text-white">
+              <a href="/services" className="text-sm font-semibold leading-6 text-gray-900">
                 Learn about our services <span aria-hidden="true">→</span>
               </a>
             </div>
