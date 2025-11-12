@@ -53,7 +53,7 @@ const footerLinks = {
 export const Footer = () => {
   return (
     <FadeIn>
-      <footer className="bg-black/50 backdrop-blur-lg" aria-labelledby="footer-heading">
+      <footer className="bg-gray-100 border-t-4 border-orange-500" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -63,7 +63,7 @@ export const Footer = () => {
               <Link href="/" className="block">
                 <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-16 w-auto" />
               </Link>
-              <p className="text-sm leading-6 text-gray-300">
+              <p className="text-sm leading-6 text-gray-700">
                 Your trusted partner in education, business, and retail services.
               </p>
               <div className="flex space-x-6">
@@ -71,7 +71,7 @@ export const Footer = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-gray-400 hover:text-gray-300"
+                    className="text-orange-500 hover:text-blue-600 transition-colors"
                   >
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -82,13 +82,13 @@ export const Footer = () => {
             <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold leading-6 text-white">Services</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Services</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.solutions.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
+                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
                         >
                           {item.name}
                         </Link>
@@ -97,13 +97,13 @@ export const Footer = () => {
                   </ul>
                 </div>
                 <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-white">Quick Links</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Quick Links</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.support.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
+                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
                         >
                           {item.name}
                         </Link>
@@ -114,13 +114,13 @@ export const Footer = () => {
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold leading-6 text-white">Company</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Company</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.company.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
+                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
                         >
                           {item.name}
                         </Link>
@@ -129,13 +129,13 @@ export const Footer = () => {
                   </ul>
                 </div>
                 <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-white">Legal</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.legal.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
+                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
                         >
                           {item.name}
                         </Link>
@@ -146,18 +146,18 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+          <div className="mt-16 border-t border-gray-300 pt-8 sm:mt-20 lg:mt-24">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-              <p className="text-xs leading-5 text-gray-400">
+              <p className="text-xs leading-5 text-gray-600">
                 &copy; {new Date().getFullYear()} RR Gemini Services. All rights reserved.
               </p>
-              <div className="flex items-center gap-2 text-xs text-gray-400">
+              <div className="flex items-center gap-2 text-xs text-gray-600">
                 <span>Developed by</span>
                 <a
                   href="https://github.com/talha1230"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
+                  className="text-blue-600 hover:text-orange-500 transition-colors"
                 >
                   <span className="sr-only">GitHub</span>
                   <svg className="h-4 w-4 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -169,7 +169,7 @@ export const Footer = () => {
                   href="https://www.linkedin.com/in/talha1230/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
+                  className="text-blue-600 hover:text-orange-500 transition-colors"
                 >
                   <span className="sr-only">LinkedIn</span>
                   <svg className="h-4 w-4 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

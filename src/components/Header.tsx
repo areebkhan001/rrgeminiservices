@@ -16,14 +16,19 @@ export const Header = () => {
 
   return (
     <FadeIn className="fixed top-0 left-0 right-0 z-50">
-      <header className="border-b border-white/10 bg-black/50 backdrop-blur-lg">
+      <header className="border-b border-orange-600 bg-orange-500 shadow-lg relative">
+        {/* Blue glow effect */}
+        <div className="absolute inset-x-0 -bottom-8 h-8 bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent pointer-events-none"></div>
+        
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between p-1 lg:px-8"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-12 w-auto" />
+              <div className="bg-white rounded-full p-0.5 shadow-2xl ring-4 ring-orange-400/30">
+                <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-16 w-auto" />
+              </div>
             </Link>
           </div>
           <div className="flex lg:hidden">
@@ -54,7 +59,7 @@ export const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-semibold leading-6 text-white hover:text-white/80 transition-colors"
+                className="text-sm font-semibold leading-6 text-white hover:text-white/80 transition-colors drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
               >
                 {item.name}
               </Link>
@@ -64,10 +69,12 @@ export const Header = () => {
 
         {/* Mobile menu */}
         <div className={`lg:hidden ${isMenuOpen ? "" : "hidden"}`}>
-          <div className="fixed inset-y-0 right-0 z-50 w-full bg-black/95 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+          <div className="fixed inset-y-0 right-0 z-50 w-full bg-orange-500 px-6 py-6 sm:max-w-sm shadow-2xl">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
-                <span className="text-xl font-bold text-white">RR GEMINI</span>
+                <div className="bg-white rounded-full p-2 shadow-md">
+                  <span className="text-lg font-bold text-orange-600">RR GEMINI</span>
+                </div>
               </Link>
               <button
                 type="button"
@@ -88,13 +95,13 @@ export const Header = () => {
               </button>
             </div>
             <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-white/10">
+              <div className="-my-6 divide-y divide-white/20">
                 <div className="space-y-2 py-6">
                   {navItems.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-orange-600"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}

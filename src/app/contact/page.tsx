@@ -75,15 +75,15 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center py-24">
+    <main className="flex min-h-screen flex-col items-center py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-400">Contact Us</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-base font-semibold leading-7 text-blue-600">Contact Us</h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Get in Touch
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-700">
               We're here to help with all your business, education, and retail needs. Reach out to
               us and we'll respond as soon as possible.
             </p>
@@ -92,9 +92,9 @@ export default function ContactPage() {
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           <FadeIn>
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900/5 px-6 pb-9 pt-8 backdrop-blur">
-              <h3 className="font-semibold text-white">Main Office</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-300">
+            <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-blue-200 px-6 pb-9 pt-8 shadow-md">
+              <h3 className="font-semibold text-gray-900">Main Office</h3>
+              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700">
                 <div>
                   <dt className="sr-only">Address</dt>
                   <dd>{officeLocation.address}</dd>
@@ -104,12 +104,12 @@ export default function ContactPage() {
                 <div>
                   <dt className="sr-only">Phone number</dt>
                   <dd>
-                    <a href={`tel:${officeLocation.phone1}`} className="hover:text-white">
+                    <a href={`tel:${officeLocation.phone1}`} className="hover:text-blue-600">
                       {officeLocation.phone1}
                     </a>
                   </dd>
                   <dd>
-                    <a href={`tel:${officeLocation.phone2}`} className="hover:text-white">
+                    <a href={`tel:${officeLocation.phone2}`} className="hover:text-blue-600">
                       {officeLocation.phone2}
                     </a>
                   </dd>
@@ -117,7 +117,7 @@ export default function ContactPage() {
                 <div>
                   <dt className="sr-only">Email</dt>
                   <dd>
-                    <a href={`mailto:${officeLocation.email}`} className="hover:text-white">
+                    <a href={`mailto:${officeLocation.email}`} className="hover:text-blue-600">
                       {officeLocation.email}
                     </a>
                   </dd>
@@ -128,9 +128,9 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900/5 px-6 pb-9 pt-8 backdrop-blur">
-              <h3 className="font-semibold text-white">Retail Store</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-300">
+            <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-orange-200 px-6 pb-9 pt-8 shadow-md">
+              <h3 className="font-semibold text-gray-900">Retail Store</h3>
+              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700">
                 <div>
                   <dt className="sr-only">Store name and address</dt>
                   <dd>{retailLocation.address}</dd>
@@ -144,9 +144,9 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900/5 px-6 pb-9 pt-8 backdrop-blur">
-              <h3 className="font-semibold text-white">Registration</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-300">
+            <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-blue-200 px-6 pb-9 pt-8 shadow-md">
+              <h3 className="font-semibold text-gray-900">Registration</h3>
+              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700">
                 <div>
                   <dt className="sr-only">Business registration</dt>
                   <dd>{officeLocation.registration}</dd>
@@ -158,9 +158,9 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900/5 px-6 pb-9 pt-8 backdrop-blur">
-              <h3 className="font-semibold text-white">Business Hours</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-300">
+            <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-orange-200 px-6 pb-9 pt-8 shadow-md">
+              <h3 className="font-semibold text-gray-900">Business Hours</h3>
+              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700">
                 <div>
                   <dt>Monday - Friday</dt>
                   <dd>9:00 AM - 6:00 PM</dd>
@@ -182,13 +182,13 @@ export default function ContactPage() {
         {/* Contact Form */}
         <FadeIn>
           <div className="mx-auto mt-16 max-w-2xl">
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900/5 px-6 py-8 backdrop-blur sm:px-8">
+            <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-gray-200 px-6 py-8 shadow-lg sm:px-8">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-semibold leading-6 text-white"
+                      className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       Name
                     </label>
@@ -200,14 +200,14 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-semibold leading-6 text-white"
+                      className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       Email
                     </label>
@@ -219,14 +219,14 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-sm font-semibold leading-6 text-white"
+                      className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       Phone
                     </label>
@@ -237,14 +237,14 @@ export default function ContactPage() {
                         id="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-sm font-semibold leading-6 text-white"
+                      className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       Subject
                     </label>
@@ -256,14 +256,14 @@ export default function ContactPage() {
                         required
                         value={formData.subject}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="message"
-                      className="block text-sm font-semibold leading-6 text-white"
+                      className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       Message
                     </label>
@@ -275,7 +275,7 @@ export default function ContactPage() {
                         required
                         value={formData.message}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -284,7 +284,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full rounded-md bg-gradient-to-r from-blue-600 via-orange-500 to-orange-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:from-blue-500 hover:via-orange-400 hover:to-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
