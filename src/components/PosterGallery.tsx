@@ -257,9 +257,9 @@ export function PosterGallery() {
 
               {/* Pagination indicator */}
               <div className="flex justify-center gap-2 pb-6">
-                {posters.map((_, index) => (
+                {posters.map((poster, index) => (
                   <button
-                    key={index}
+                    key={poster.id}
                     onClick={() => {
                       setCurrentIndex(index);
                       setSelectedPoster(posters[index]);

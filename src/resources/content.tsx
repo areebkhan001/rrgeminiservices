@@ -1,4 +1,4 @@
-import { Home, Social } from "@/types";
+import type { Home, Social } from "@/types";
 
 const social: Social = [
   {

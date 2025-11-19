@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { FadeIn, SpotlightCard } from "@/components/ui/motion";
 import { PosterGallery } from "@/components/PosterGallery";
 

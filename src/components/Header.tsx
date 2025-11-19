@@ -18,7 +18,7 @@ export const Header = () => {
     <FadeIn className="fixed top-0 left-0 right-0 z-50">
       <header className="border-b border-orange-600 bg-orange-500 shadow-lg relative">
         {/* Blue glow effect */}
-        <div className="absolute inset-x-0 -bottom-8 h-8 bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 -bottom-8 h-8 bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent pointer-events-none" />
         
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-1 lg:px-8"
