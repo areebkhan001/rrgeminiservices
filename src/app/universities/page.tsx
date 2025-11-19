@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/ui/motion";
 
 export const metadata: Metadata = {

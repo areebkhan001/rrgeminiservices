@@ -18,16 +18,16 @@ export const Header = () => {
     <FadeIn className="fixed top-0 left-0 right-0 z-50">
       <header className="border-b border-orange-600 bg-orange-500 shadow-lg relative">
         {/* Blue glow effect */}
-        <div className="absolute inset-x-0 -bottom-8 h-8 bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 -bottom-8 h-8 bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent pointer-events-none" />
         
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between p-1 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <div className="bg-white rounded-full p-0.5 shadow-2xl ring-4 ring-orange-400/30">
-                <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-16 w-auto" />
+              <div className="bg-white rounded-full p-1.5 shadow-2xl ring-8 ring-orange-400/40 hover:ring-orange-300/60 transition-all duration-300 hover:scale-105">
+                <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-24 w-auto" />
               </div>
             </Link>
           </div>

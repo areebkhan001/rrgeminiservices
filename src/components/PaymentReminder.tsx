@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, CreditCard, Shield, Zap } from 'lucide-react';
 
@@ -92,26 +92,36 @@ export const PaymentReminder = ({ onClose }: PaymentReminderProps) => {
       >
         {/* Animated background particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-yellow-500/30 rounded-full"
-              animate={{
-                x: [0, Math.random() * 100 - 50],
-                y: [0, Math.random() * 100 - 50],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
+          {Array.from({ length: 20 }, (_, i) => {
+            const x = (i * 37) % 100 - 50;
+            const y = (i * 53) % 100 - 50;
+            const duration = 3 + (i % 5);
+            const delay = (i % 10) * 0.2;
+            const left = (i * 17) % 100;
+            const top = (i * 23) % 100;
+            const particleId = `particle-${left}-${top}-${duration}`;
+            
+            return (
+              <motion.div
+                key={particleId}
+                className="absolute w-1 h-1 bg-yellow-500/30 rounded-full"
+                animate={{
+                  x: [0, x],
+                  y: [0, y],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay,
+                }}
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+              />
+            );
+          })}
         </div>
 
         <motion.div
@@ -142,14 +152,14 @@ export const PaymentReminder = ({ onClose }: PaymentReminderProps) => {
             <div className="relative">
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-500 to-blue-500 flex items-center justify-center"
               >
                 <Shield className="w-8 h-8 text-white" />
               </motion.div>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center"
               >
                 <span className="text-xs font-bold">!</span>
@@ -212,12 +222,12 @@ export const PaymentReminder = ({ onClose }: PaymentReminderProps) => {
             <div className="grid grid-cols-2 gap-3 my-6">
               {[
                 { icon: Zap, text: 'Real-time Booking', color: 'text-yellow-400' },
-                { icon: Shield, text: 'Secure Payments', color: 'text-blue-400' },
-                { icon: CreditCard, text: 'Easy Checkout', color: 'text-green-400' },
-                { icon: Clock, text: '24/7 Support', color: 'text-purple-400' },
+                { icon: Shield, text: 'Secure Payments', color: 'text-blue-400', id: 'secure' },
+                { icon: CreditCard, text: 'Easy Checkout', color: 'text-green-400', id: 'checkout' },
+                { icon: Clock, text: '24/7 Support', color: 'text-purple-400', id: 'support' },
               ].map((feature, index) => (
                 <motion.div
-                  key={index}
+                  key={feature.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1 + index * 0.1 }}

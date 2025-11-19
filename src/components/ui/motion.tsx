@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 
 export const FadeIn = ({
   children,
@@ -53,19 +53,26 @@ export const FadeIn = ({
 };
 
 export const Meteors = ({ number = 20 }: { number?: number }) => {
-  const meteors = new Array(number).fill(true);
+  const meteors = useMemo(() => {
+    return new Array(number).fill(true).map((_, idx) => ({
+      id: `meteor-${idx}`,
+      left: Math.random() * 100,
+      delay: Math.random() * (0.8 - 0.2) + 0.2,
+      duration: Math.random() * (10 - 2) + 2,
+    }));
+  }, [number]);
 
   return (
     <div className="relative w-full overflow-hidden">
-      {meteors.map((_, idx) => (
+      {meteors.map((meteor) => (
         <span
-          key={idx}
+          key={meteor.id}
           className="animate-meteor fixed h-0.5 w-0.5 rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10] rotate-[215deg] before:content-[''] before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:w-[50px] before:h-[1px] before:bg-gradient-to-r before:from-[#64748b] before:to-transparent"
           style={{
             top: 0,
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * (0.8 - 0.2) + 0.2}s`,
-            animationDuration: `${Math.random() * (10 - 2) + 2}s`,
+            left: `${meteor.left}%`,
+            animationDelay: `${meteor.delay}s`,
+            animationDuration: `${meteor.duration}s`,
           }}
         />
       ))}
