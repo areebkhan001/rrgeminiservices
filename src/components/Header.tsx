@@ -129,7 +129,7 @@ export const Header = () => {
           <div className="absolute inset-y-0 w-32 -left-32 group-hover:left-[calc(100%+32px)] transition-[left] duration-[2000ms] ease-in-out bg-gradient-to-r from-transparent via-white/60 dark:via-cyan-400/60 to-transparent -skew-x-12" />
         </div>
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5 lg:px-8 relative"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
@@ -243,10 +243,10 @@ export const Header = () => {
         </nav>
 
         {/* Mobile menu - Right-side dropdown */}
-        <div className="lg:hidden">
+        <div className="lg:hidden relative">
           {isMenuOpen && (
             <div 
-              className="fixed inset-0 bg-black/50 z-[60] transition-opacity duration-200"
+              className="fixed inset-0 bg-black/30 z-[60] transition-opacity duration-200"
               onClick={() => setIsMenuOpen(false)}
               onKeyDown={(e) => e.key === 'Escape' && setIsMenuOpen(false)}
               role="button"
@@ -255,7 +255,7 @@ export const Header = () => {
             />
           )}
           {isMenuOpen && (
-            <div className="absolute top-full right-6 z-[70] mt-2 w-64 bg-orange-500 dark:bg-blue-900 rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2 duration-200">
+            <div className="fixed top-[88px] right-4 z-[999] w-64 bg-orange-500 dark:bg-blue-900 rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2 duration-200">
               <div className="divide-y divide-white/20">
                 {navItems.map((item) => (
                   <Link
