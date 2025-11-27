@@ -116,8 +116,8 @@ export const Header = () => {
   };
 
   return (
-    <FadeIn className="fixed top-0 left-0 right-0 z-40">
-      <header className="border-b border-white/10 bg-gradient-to-r from-orange-500/95 via-orange-600/95 to-orange-500/95 dark:from-blue-900/95 dark:via-blue-800/95 dark:to-blue-900/95 shadow-lg backdrop-blur-xl relative overflow-hidden group">
+    <FadeIn className="fixed top-0 left-0 right-0 z-[100]">
+      <header className="border-b border-white/10 bg-gradient-to-r from-orange-500/95 via-orange-600/95 to-orange-500/95 dark:from-blue-900/95 dark:via-blue-800/95 dark:to-blue-900/95 shadow-lg backdrop-blur-xl relative group">
         {/* Animated background orbs for color mixing effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-yellow-400/20 rounded-full blur-3xl animate-pulse" />
@@ -246,7 +246,7 @@ export const Header = () => {
         <div className="lg:hidden relative">
           {isMenuOpen && (
             <div 
-              className="fixed inset-0 bg-black/30 z-[60] transition-opacity duration-200"
+              className="fixed inset-0 bg-black/30 z-[150] transition-opacity duration-200"
               onClick={() => setIsMenuOpen(false)}
               onKeyDown={(e) => e.key === 'Escape' && setIsMenuOpen(false)}
               role="button"
@@ -255,7 +255,7 @@ export const Header = () => {
             />
           )}
           {isMenuOpen && (
-            <div className="fixed top-[88px] right-4 z-[999] w-64 bg-orange-500 dark:bg-blue-900 rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2 duration-200">
+            <div className="fixed top-[88px] right-4 z-[200] w-64 bg-orange-500 dark:bg-blue-900 rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2 duration-200">
               <div className="divide-y divide-white/20">
                 {navItems.map((item) => (
                   <Link
