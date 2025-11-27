@@ -243,16 +243,16 @@ export const Header = () => {
         </nav>
 
         {/* Mobile menu */}
-        <div className="lg:hidden">
+        <div className="lg:hidden" style={{ position: 'relative', zIndex: 9999 }}>
           <div 
-            className={`fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ${isMenuOpen ? 'opacity-100 z-[60]' : 'opacity-0 pointer-events-none -z-10'}`}
             onClick={() => setIsMenuOpen(false)}
             onKeyDown={(e) => e.key === 'Escape' && setIsMenuOpen(false)}
             role="button"
             tabIndex={0}
             aria-label="Close menu"
           />
-          <div className={`fixed inset-y-0 right-0 z-[70] w-full bg-orange-500 dark:bg-blue-900 px-6 py-6 sm:max-w-sm shadow-2xl transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className={`fixed inset-y-0 right-0 z-[70] w-full bg-orange-500 dark:bg-blue-900 px-6 py-6 sm:max-w-sm shadow-2xl transition-transform duration-300 ease-in-out overflow-y-auto ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-12 w-auto dark:brightness-0 dark:invert" />
