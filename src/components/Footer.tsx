@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import { FadeIn } from "./ui/motion";
 
@@ -53,17 +55,17 @@ const footerLinks = {
 export const Footer = () => {
   return (
     <FadeIn>
-      <footer className="bg-gray-100 border-t-4 border-orange-500" aria-labelledby="footer-heading">
+      <footer className="bg-gray-100 dark:bg-slate-900 border-t-4 border-orange-500 dark:border-cyan-500 transition-colors duration-300" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-8 pt-12 sm:pt-16 lg:px-8 lg:pt-24">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <Link href="/" className="block">
-                <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-16 w-auto" />
+                <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-12 sm:h-16 w-auto dark:brightness-0 dark:invert transition-all duration-300" />
               </Link>
-              <p className="text-sm leading-6 text-gray-700">
+              <p className="text-sm leading-6 text-gray-700 dark:text-gray-300 pr-4">
                 Your trusted partner in education, business, and retail services.
               </p>
               <div className="flex space-x-6">
@@ -71,7 +73,7 @@ export const Footer = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-orange-500 hover:text-blue-600 transition-colors"
+                    className="text-orange-500 dark:text-cyan-400 hover:text-blue-600 dark:hover:text-cyan-300 transition-colors"
                   >
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -82,13 +84,13 @@ export const Footer = () => {
             <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Services</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Services</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.solutions.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
+                          className="text-sm leading-6 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
                         >
                           {item.name}
                         </Link>
@@ -97,13 +99,13 @@ export const Footer = () => {
                   </ul>
                 </div>
                 <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Quick Links</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Quick Links</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.support.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
+                          className="text-sm leading-6 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
                         >
                           {item.name}
                         </Link>
@@ -114,13 +116,13 @@ export const Footer = () => {
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Company</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Company</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.company.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
+                          className="text-sm leading-6 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
                         >
                           {item.name}
                         </Link>
@@ -129,13 +131,13 @@ export const Footer = () => {
                   </ul>
                 </div>
                 <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Legal</h3>
                   <ul className="mt-6 space-y-4">
                     {footerLinks.legal.map((item) => (
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="text-sm leading-6 text-gray-700 hover:text-blue-600"
+                          className="text-sm leading-6 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
                         >
                           {item.name}
                         </Link>
@@ -146,18 +148,18 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="mt-16 border-t border-gray-300 pt-8 sm:mt-20 lg:mt-24">
+          <div className="mt-16 border-t border-gray-300 dark:border-gray-700 pt-8 sm:mt-20 lg:mt-24">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-              <p className="text-xs leading-5 text-gray-600">
+              <p className="text-xs leading-5 text-gray-600 dark:text-gray-400">
                 &copy; {new Date().getFullYear()} RR Gemini Services. All rights reserved.
               </p>
-              <div className="flex items-center gap-2 text-xs text-gray-600">
+              <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
                 <span>Developed by</span>
                 <a
                   href="https://github.com/talha1230"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-orange-500 transition-colors"
+                  className="text-blue-600 dark:text-cyan-400 hover:text-orange-500 dark:hover:text-cyan-300 transition-colors"
                 >
                   <span className="sr-only">GitHub</span>
                   <svg className="h-4 w-4 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -169,7 +171,7 @@ export const Footer = () => {
                   href="https://www.linkedin.com/in/talha1230/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-orange-500 transition-colors"
+                  className="text-blue-600 dark:text-cyan-400 hover:text-orange-500 dark:hover:text-cyan-300 transition-colors"
                 >
                   <span className="sr-only">LinkedIn</span>
                   <svg className="h-4 w-4 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

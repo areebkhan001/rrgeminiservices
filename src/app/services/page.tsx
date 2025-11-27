@@ -96,18 +96,25 @@ const retailServices = [
 
 export default function ServicesPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center py-24 gap-24 bg-white">
+    <main className="flex min-h-screen flex-col items-center py-20 sm:py-24 gap-16 sm:gap-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] hidden dark:block bg-gradient-to-br dark:from-slate-300/50 dark:via-slate-200/30 to-transparent rounded-full blur-2xl" />
+        <div className="absolute top-1/3 right-0 w-[400px] h-[400px] hidden dark:block bg-gradient-to-bl dark:from-slate-300/45 dark:via-slate-200/25 to-transparent rounded-full blur-2xl" />
+        <div className="absolute bottom-0 left-1/2 w-[450px] h-[450px] hidden dark:block bg-gradient-to-tr dark:from-slate-200/35 to-transparent rounded-full blur-2xl" />
+      </div>
+      
       {/* Advisory & Consultancy Section */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-blue-600">
+            <h2 className="text-sm sm:text-base font-semibold leading-7 text-blue-600 dark:text-cyan-400">
               Advisory & Consultancy
             </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Professional Business Solutions
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-700">
+            <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
               Comprehensive advisory services for businesses, students, and individuals, backed by
               years of experience and expertise.
             </p>
@@ -118,13 +125,13 @@ export default function ServicesPage() {
               {advisoryServices.map((service) => (
                 <FadeIn key={service.title}>
                   <SpotlightCard>
-                    <div className="p-8 bg-white border-2 border-blue-200 rounded-2xl shadow-md">
-                      <dt className="text-lg font-semibold leading-7 text-gray-900">
+                    <div className="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      <dt className="text-lg font-semibold leading-7 text-slate-900 dark:text-white">
                         {service.title}
                       </dt>
                       <dd className="mt-4 flex flex-auto flex-col gap-4">
-                        <p className="text-sm leading-6 text-gray-700">{service.description}</p>
-                        <ul className="mt-2 text-sm text-gray-700 space-y-2">
+                        <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{service.description}</p>
+                        <ul className="mt-2 text-sm text-slate-600 dark:text-slate-300 space-y-2">
                           {service.details.map((detail) => (
                             <li key={detail} className="flex gap-x-3">
                               <svg
@@ -155,14 +162,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Trading & Retail Section */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn>
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-orange-600">Trading & Retail</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-base font-semibold leading-7 text-orange-600 dark:text-orange-400">Trading & Retail</h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Authentic Cultural Products
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-700">
+            <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
               Discover our curated collection of authentic Kashmir handicrafts, textiles, and
               jewelry at our Jonker Walk location in Melaka.
             </p>
@@ -173,17 +180,17 @@ export default function ServicesPage() {
               {retailServices.map((service) => (
                 <FadeIn key={service.title}>
                   <SpotlightCard>
-                    <div className="p-8 bg-white border-2 border-orange-200 rounded-2xl shadow-md">
-                      <dt className="text-lg font-semibold leading-7 text-gray-900">
+                    <div className="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      <dt className="text-lg font-semibold leading-7 text-slate-900 dark:text-white">
                         {service.title}
                       </dt>
                       <dd className="mt-4 flex flex-auto flex-col gap-4">
-                        <p className="text-sm leading-6 text-gray-700">{service.description}</p>
-                        <ul className="mt-2 text-sm text-gray-700 space-y-2">
+                        <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{service.description}</p>
+                        <ul className="mt-2 text-sm text-slate-600 dark:text-slate-300 space-y-2">
                           {service.details.map((detail) => (
                             <li key={detail} className="flex gap-x-3">
                               <svg
-                                className="h-6 w-5 flex-none text-red-500"
+                                className="h-6 w-5 flex-none text-orange-500"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 aria-hidden="true"
@@ -210,16 +217,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Work Opportunities Section */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 py-16 bg-gray-50 rounded-3xl">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl shadow-xl border border-slate-200/50">
         <FadeIn>
           <div className="mx-auto max-w-2xl lg:text-center mb-16">
-            <h2 className="text-base font-semibold leading-7 text-blue-600">
+            <h2 className="text-base font-semibold leading-7 text-blue-600 dark:text-cyan-400">
               Work Opportunities
             </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Global Career Placement
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-700">
+            <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
               We help connect skilled professionals with exciting opportunities in Azerbaijan, Norway,
               and across Europe. Explore our current openings.
             </p>

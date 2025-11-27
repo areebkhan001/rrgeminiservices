@@ -89,13 +89,10 @@ export const SpotlightCard = ({
 }) => {
   return (
     <div
-      className={`relative h-full w-full bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-3xl ${className}`}
+      className={`relative h-full w-full rounded-3xl ${className}`}
     >
-      <div className="absolute inset-0 h-full w-full">
-        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
-      </div>
       <div className="absolute left-0 top-0 h-full w-full overflow-hidden rounded-3xl">
-        <div className="absolute left-[--x] top-[--y] h-56 w-56 -translate-x-1/2 -translate-y-1/2 transform animate-spotlight opacity-0 bg-gradient-to-r from-transparent to-white/10" />
+        <div className="absolute left-[--x] top-[--y] h-56 w-56 -translate-x-1/2 -translate-y-1/2 transform animate-spotlight opacity-0 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-2xl" />
       </div>
       {children}
     </div>
