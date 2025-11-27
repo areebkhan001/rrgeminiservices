@@ -222,9 +222,9 @@ export const Header = () => {
         </nav>
 
         {/* Mobile menu */}
-        <div className={`lg:hidden ${isMenuOpen ? "" : "hidden"}`}>
+        <div className="lg:hidden">
           <div 
-            className="fixed inset-0 bg-black/50 z-40" 
+            className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             onClick={() => setIsMenuOpen(false)}
             onKeyDown={(e) => e.key === 'Escape' && setIsMenuOpen(false)}
             role="button"
