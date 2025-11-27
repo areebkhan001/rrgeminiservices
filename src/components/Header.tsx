@@ -116,7 +116,7 @@ export const Header = () => {
   };
 
   return (
-    <FadeIn className="fixed top-0 left-0 right-0 z-50">
+    <FadeIn className="fixed top-0 left-0 right-0 z-40">
       <header className="border-b border-white/10 bg-gradient-to-r from-orange-500/95 via-orange-600/95 to-orange-500/95 dark:from-blue-900/95 dark:via-blue-800/95 dark:to-blue-900/95 shadow-lg backdrop-blur-xl relative overflow-hidden group">
         {/* Animated background orbs for color mixing effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -245,14 +245,14 @@ export const Header = () => {
         {/* Mobile menu */}
         <div className="lg:hidden">
           <div 
-            className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             onClick={() => setIsMenuOpen(false)}
             onKeyDown={(e) => e.key === 'Escape' && setIsMenuOpen(false)}
             role="button"
             tabIndex={0}
             aria-label="Close menu"
           />
-          <div className={`fixed inset-y-0 right-0 z-50 w-full bg-orange-500 dark:bg-blue-900 px-6 py-6 sm:max-w-sm shadow-2xl transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className={`fixed inset-y-0 right-0 z-[70] w-full bg-orange-500 dark:bg-blue-900 px-6 py-6 sm:max-w-sm shadow-2xl transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <img src="/main-logo.png" alt="RR GEMINI SERVICES" className="h-12 w-auto dark:brightness-0 dark:invert" />
