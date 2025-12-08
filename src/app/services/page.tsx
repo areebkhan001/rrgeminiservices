@@ -30,13 +30,13 @@ const advisoryServices = [
     ],
   },
   {
-    title: "Takaful Advisory",
-    description: "Islamic financial and estate planning services",
+    title: "Property Consultancy (Dubai, Malaysia)",
+    description: "General Real Estate (Best for a broad audience)",
     details: [
-      "Takaful product consultation",
-      "Islamic estate planning",
-      "Financial protection strategies",
-      "Family Takaful solutions",
+      "Real estate investment advisory",
+      "Residential & commercial sales",
+      "Property valuation and market analysis",
+      "Leasing and tenant management",
     ],
   },
   {
