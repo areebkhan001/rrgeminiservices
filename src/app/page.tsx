@@ -108,29 +108,20 @@ const services = [
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Hero Section */}
       <div className="relative isolate pt-14 w-full overflow-hidden">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none" aria-hidden="true">
-          <div className="absolute top-20 -left-20 w-96 h-96 hidden dark:block dark:bg-slate-300/40 rounded-full blur-2xl" />
-          <div className="absolute top-40 right-0 w-80 h-80 hidden dark:block dark:bg-slate-300/35 rounded-full blur-2xl" />
-          <div className="absolute bottom-20 left-1/2 w-72 h-72 hidden dark:block dark:bg-slate-200/30 rounded-full blur-2xl" />
+        {/* Decorative manga-style lines */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden" aria-hidden="true">
+          <div className="absolute top-32 left-0 w-32 h-1 bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-orange-400/60 dark:to-gray-700 animate-slideRight" />
+          <div className="absolute top-48 right-0 w-40 h-1 bg-gradient-to-l from-transparent via-gray-400 dark:via-gray-600 to-orange-400/60 dark:to-gray-700 animate-slideLeft" />
+          <div className="absolute bottom-32 left-1/4 w-24 h-0.5 bg-gradient-to-r from-orange-300/40 dark:from-gray-600/40 to-transparent opacity-60 animate-pulse" />
+          <div className="absolute top-1/2 right-12 w-2 h-20 bg-gradient-to-b from-gray-400/40 to-transparent opacity-40" />
+          <div className="absolute top-1/3 left-12 w-2 h-16 bg-gradient-to-t from-gray-400/40 to-transparent opacity-40" />
         </div>
+
         
-        {/* Decorative shapes */}
-        <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-orange-400 via-blue-400 to-orange-300 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          />
-        </div>
+
 
         <FadeIn>
           <div className="py-20 sm:py-32 lg:pb-40">
@@ -146,7 +137,7 @@ export default function Home() {
                 <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6 px-4">
                   <Link
                     href="/services"
-                    className="w-full sm:w-auto rounded-md bg-orange-600 dark:bg-orange-500 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-orange-500 dark:hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 touch-manipulation text-center"
+                    className="w-full sm:w-auto rounded-md bg-orange-600 dark:bg-gray-700 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-orange-500 dark:hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:focus-visible:outline-gray-500 touch-manipulation text-center"
                   >
                     Our Services
                   </Link>
@@ -160,11 +151,19 @@ export default function Home() {
         </FadeIn>
       </div>
 
+      {/* Manga-style section divider */}
+      <div className="w-full py-8 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-4">
+            <div className="flex-1 h-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-orange-400/50 dark:to-gray-700" />
+            <div className="w-3 h-3 rotate-45 bg-orange-500 dark:bg-gray-600" />
+            <div className="flex-1 h-1 bg-gradient-to-l from-transparent via-gray-300 dark:via-gray-700 to-orange-400/50 dark:to-gray-700" />
+          </div>
+        </div>
+      </div>
+
       {/* Services Section */}
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 w-full">
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-800 dark:via-slate-900 dark:to-slate-800" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.15),transparent_50%),radial-gradient(circle_at_bottom_left,rgba(251,146,60,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(203,213,225,0.4),transparent_50%),radial-gradient(circle_at_bottom_left,rgba(203,213,225,0.3),transparent_50%)]" aria-hidden="true" />
         
         <div className="relative z-10">
         <FadeIn>
@@ -182,9 +181,16 @@ export default function Home() {
           {services.map((service) => (
             <FadeIn key={service.title}>
               <SpotlightCard>
-                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl px-5 sm:px-6 pb-6 sm:pb-8 pt-6 sm:pt-8 bg-white dark:bg-slate-800 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 touch-manipulation">
+                <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl px-5 sm:px-6 pb-6 sm:pb-8 pt-6 sm:pt-8 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 touch-manipulation border-l-4 border-orange-400/70">
+                  {/* Decorative corner accent */}
+                  <div className="absolute top-0 right-0 w-16 h-16 opacity-15">
+                    <div className="absolute top-2 right-2 w-12 h-0.5 bg-gray-400 transform rotate-45" />
+                    <div className="absolute top-2 right-2 w-0.5 h-12 bg-gray-400 transform rotate-45" />
+                  </div>
+                  {/* Hover effect line */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gray-400 to-orange-400/70 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                   <div className="flex items-center gap-x-3 sm:gap-x-4">
-                    <div className="h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/30 text-orange-600 flex-shrink-0">
+                    <div className="h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/30 dark:from-gray-600/20 dark:to-gray-700/30 text-orange-600 dark:text-gray-300 flex-shrink-0">
                       {service.icon}
                     </div>
                     <h3 className="text-base sm:text-lg font-semibold leading-6 sm:leading-7 tracking-tight text-slate-900 dark:text-white">
@@ -200,11 +206,21 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Manga-style section divider */}
+      <div className="w-full py-8 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-4">
+            <div className="w-3 h-3 rotate-45 bg-orange-500 dark:bg-gray-600" />
+            <div className="flex-1 h-1 bg-gradient-to-r from-gray-300 via-orange-400/50 dark:via-gray-700 to-transparent" />
+            <div className="w-2 h-2 rounded-full bg-orange-500 dark:bg-gray-600" />
+            <div className="flex-1 h-1 bg-gradient-to-l from-gray-300 via-orange-400/50 dark:via-gray-700 to-transparent" />
+            <div className="w-3 h-3 rotate-45 bg-orange-500 dark:bg-gray-600" />
+          </div>
+        </div>
+      </div>
+
       {/* Work Opportunities Section */}
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 w-full overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-orange-200/30 dark:from-slate-300/50 to-transparent rounded-full blur-2xl" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-orange-200/25 dark:from-slate-300/40 to-transparent rounded-full blur-2xl" aria-hidden="true" />
         
         <div className="relative z-10">
         <FadeIn>

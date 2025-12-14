@@ -75,18 +75,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] hidden dark:block bg-gradient-to-br dark:from-slate-300/50 dark:via-slate-200/30 to-transparent rounded-full blur-2xl" />
-        
-        {/* Additional light mode only glow elements */}
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-orange-300/20 to-transparent rounded-full blur-3xl dark:hidden" />
-        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-radial from-orange-200/15 to-transparent rounded-full blur-2xl dark:hidden" />
-        <div className="absolute top-2/3 right-1/5 w-72 h-72 bg-gradient-radial from-orange-400/12 to-transparent rounded-full blur-2xl dark:hidden" />
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-orange-200/28 dark:from-slate-300/45 via-orange-100/18 dark:via-slate-200/25 to-transparent rounded-full blur-2xl" />
-        <div className="absolute bottom-0 left-1/2 w-[450px] h-[450px] bg-gradient-to-tr from-orange-100/22 dark:from-slate-200/35 to-transparent rounded-full blur-2xl" />
-      </div>
+    <main className="relative flex min-h-screen flex-col items-center py-24 bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
       
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn>
@@ -140,7 +129,7 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-800 border-2 border-orange-200 dark:border-orange-400 px-6 pb-9 pt-8 shadow-md">
+            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-2 border-orange-200 dark:border-gray-600 px-6 pb-9 pt-8 shadow-md">
               <h3 className="font-semibold text-gray-900 dark:text-white">Retail Store</h3>
               <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
                 <div>
@@ -156,7 +145,7 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-800 border-2 border-blue-200 dark:border-cyan-500 px-6 pb-9 pt-8 shadow-md">
+            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-2 border-blue-200 dark:border-gray-600 px-6 pb-9 pt-8 shadow-md">
               <h3 className="font-semibold text-gray-900 dark:text-white">Registration</h3>
               <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
                 <div>
@@ -170,7 +159,7 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-800 border-2 border-orange-200 dark:border-orange-400 px-6 pb-9 pt-8 shadow-md">
+            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-2 border-orange-200 dark:border-gray-600 px-6 pb-9 pt-8 shadow-md">
               <h3 className="font-semibold text-gray-900 dark:text-white">Business Hours</h3>
               <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
                 <div>
@@ -296,7 +285,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-md bg-gradient-to-r from-blue-600 via-orange-500 to-orange-600 px-4 py-3.5 text-center text-base font-semibold text-white shadow-sm hover:from-blue-500 hover:via-orange-400 hover:to-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
+                    className="w-full rounded-md bg-gradient-to-r from-blue-600 to-blue-700 dark:from-gray-700 dark:to-gray-800 px-4 py-3.5 text-center text-base font-semibold text-white shadow-sm hover:from-blue-500 hover:to-blue-600 dark:hover:from-gray-600 dark:hover:to-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:focus-visible:outline-gray-500 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
