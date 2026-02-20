@@ -68,6 +68,23 @@ export const Footer = () => {
               <p className="text-sm leading-6 text-gray-700 dark:text-gray-300 pr-4">
                 Your trusted partner in education, business, and retail services.
               </p>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Contact Us</h3>
+                <div className="space-y-2">
+                  <a href="mailto:info@rrgeminiservices.com" className="block text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">
+                    info@rrgeminiservices.com
+                  </a>
+                  <a href="mailto:Arif@rrgeminiservices.com" className="block text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">
+                    Arif@rrgeminiservices.com
+                  </a>
+                  <a href="mailto:Owais@rrgeminiservices.com" className="block text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">
+                    Owais@rrgeminiservices.com
+                  </a>
+                  <a href="mailto:Ahmad@rrgeminiservices.com" className="block text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">
+                    Ahmad@rrgeminiservices.com
+                  </a>
+                </div>
+              </div>
               <div className="flex space-x-6">
                 {footerLinks.social.map((item) => (
                   <Link
