@@ -97,6 +97,23 @@ export const Footer = () => {
                   </Link>
                 ))}
               </div>
+              <ul className="space-y-2">
+                {[
+                  "info@rrgeminiservices.com",
+                  "Arif@rrgeniniservices.com",
+                  "Owais@rrgeminiservices.com",
+                  "Ahmad@rrgeminiservices.com",
+                ].map((email) => (
+                  <li key={email}>
+                    <a
+                      href={`mailto:${email}`}
+                      className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
+                    >
+                      {email}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
               <div className="md:grid md:grid-cols-2 md:gap-8">
