@@ -1,24 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { FadeIn, Meteors } from "@/components/ui/motion";
+import { FadeIn, Meteors, SpotlightCard, PremiumCard } from "@/components/ui/motion";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle, Building2 } from "lucide-react";
 
 const officeLocation = {
   address: "No. 7, Jalan Kesum 24/37A, Seksyen 24",
-  city: "40300 Shah Alam",
+  city: "40300 Shah Alam, Selangor",
   country: "Malaysia",
   phone1: "+6011-23377911",
   phone2: "+6017-2391700",
   email: "info@rrgeminiservices.com",
-  registration: "RR GEMINI SERVICE (201903164676)",
-  regNumber: "SA0519682-P",
 };
 
 const retailLocation = {
-  address: "RAZ KASHMIR",
-  location: "Jonker Walk",
-  city: "Melaka",
-  country: "Malaysia",
+  name: "RAZ KASHMIR",
+  address: "Jonker Walk, Melaka, Malaysia",
 };
 
 export default function ContactPage() {
@@ -41,26 +38,15 @@ export default function ContactPage() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
+      if (!response.ok) throw new Error("Failed to send message");
 
       setSubmitStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     } catch (error) {
-      console.error("Error sending message:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -68,244 +54,195 @@ export default function ContactPage() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center py-24 bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
-      
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-base font-semibold leading-7 text-blue-600 dark:text-cyan-400">Contact Us</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Get in Touch
-            </p>
-            <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
-              We're here to help with all your business, education, and retail needs. Reach out to
-              us and we'll respond as soon as possible.
-            </p>
-          </div>
-        </FadeIn>
+    <main className="relative bg-background min-h-screen pt-32 pb-20 overflow-hidden">
+      <Meteors number={15} />
 
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+      <div className="container-wide relative z-10">
+        {/* Header */}
+        <div className="max-w-3xl mb-24">
           <FadeIn>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-800 border-2 border-blue-200 dark:border-cyan-500 px-6 pb-9 pt-8 shadow-md">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Main Office</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                <div>
-                  <dt className="sr-only">Address</dt>
-                  <dd>{officeLocation.address}</dd>
-                  <dd>{officeLocation.city}</dd>
-                  <dd>{officeLocation.country}</dd>
-                </div>
-                <div>
-                  <dt className="sr-only">Phone number</dt>
-                  <dd>
-                    <a href={`tel:${officeLocation.phone1}`} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                      {officeLocation.phone1}
-                    </a>
-                  </dd>
-                  <dd>
-                    <a href={`tel:${officeLocation.phone2}`} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                      {officeLocation.phone2}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="sr-only">Email</dt>
-                  <dd>
-                    <a href={`mailto:${officeLocation.email}`} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                      {officeLocation.email}
-                    </a>
-                  </dd>
-                </div>
-              </dl>
-              <Meteors number={20} />
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-2 border-orange-200 dark:border-gray-600 px-6 pb-9 pt-8 shadow-md">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Retail Store</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                <div>
-                  <dt className="sr-only">Store name and address</dt>
-                  <dd>{retailLocation.address}</dd>
-                  <dd>{retailLocation.location}</dd>
-                  <dd>{retailLocation.city}</dd>
-                  <dd>{retailLocation.country}</dd>
-                </div>
-              </dl>
-              <Meteors number={20} />
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-2 border-blue-200 dark:border-gray-600 px-6 pb-9 pt-8 shadow-md">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Registration</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                <div>
-                  <dt className="sr-only">Business registration</dt>
-                  <dd>{officeLocation.registration}</dd>
-                  <dd>{officeLocation.regNumber}</dd>
-                </div>
-              </dl>
-              <Meteors number={20} />
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-2 border-orange-200 dark:border-gray-600 px-6 pb-9 pt-8 shadow-md">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Business Hours</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                <div>
-                  <dt>Monday - Friday</dt>
-                  <dd>9:00 AM - 6:00 PM</dd>
-                </div>
-                <div>
-                  <dt>Saturday</dt>
-                  <dd>10:00 AM - 4:00 PM</dd>
-                </div>
-                <div>
-                  <dt>Sunday</dt>
-                  <dd>Closed</dd>
-                </div>
-              </dl>
-              <Meteors number={20} />
-            </div>
+            <span className="text-violet-600 dark:text-violet-500 font-bold tracking-widest uppercase text-sm mb-4 block">
+              Connect With Us
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-8">
+              Let's Build Your <span className="text-gradient">Success Together</span>
+            </h1>
+            <p className="text-secondary text-lg leading-relaxed font-medium">
+              Whether you're a student, a business owner, or an enthusiast of fine crafts, 
+              we're ready to provide the specialized support you need.
+            </p>
           </FadeIn>
         </div>
 
-        {/* Contact Form */}
-        <FadeIn>
-          <div className="mx-auto mt-12 sm:mt-16 max-w-2xl px-4 sm:px-0">
-            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-700 px-4 sm:px-6 py-6 sm:py-8 shadow-lg sm:px-8">
-              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-                <div className="grid grid-cols-1 gap-x-6 sm:gap-x-8 gap-y-5 sm:gap-y-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Contact Info */}
+          <div className="lg:col-span-5 space-y-8">
+            <FadeIn delay={0.1}>
+              <SpotlightCard className="p-8 border-foreground/5 dark:border-white/5 bg-foreground/2 dark:bg-white/2">
+                <div className="flex items-start gap-6">
+                  <div className="p-3 bg-violet-600/10 dark:bg-violet-600/20 text-violet-600 dark:text-violet-400 rounded-xl">
+                    <Building2 size={24} />
+                  </div>
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white"
-                    >
-                      Name
-                    </label>
-                    <div className="mt-2.5">
+                    <h3 className="text-xl font-bold text-foreground mb-4">Main Office</h3>
+                    <p className="text-secondary text-sm leading-relaxed mb-4 font-medium">
+                      {officeLocation.address}<br />
+                      {officeLocation.city}, {officeLocation.country}
+                    </p>
+                    <div className="space-y-2">
+                      <a href={`tel:${officeLocation.phone1}`} className="flex items-center gap-2 text-violet-600 dark:text-violet-400 hover:text-violet-500 transition-colors text-sm font-semibold">
+                        <Phone size={16} /> {officeLocation.phone1}
+                      </a>
+                      <a href={`mailto:${officeLocation.email}`} className="flex items-center gap-2 text-violet-600 dark:text-violet-400 hover:text-violet-500 transition-colors text-sm font-semibold text-wrap break-all">
+                        <Mail size={16} /> {officeLocation.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </SpotlightCard>
+            </FadeIn>
+
+            <FadeIn delay={0.2}>
+              <SpotlightCard className="p-8 border-foreground/5 dark:border-white/5 bg-foreground/2 dark:bg-white/2">
+                <div className="flex items-start gap-6">
+                  <div className="p-3 bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 rounded-xl">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-4">Retail Experience</h3>
+                    <p className="text-secondary text-sm leading-relaxed font-medium">
+                      <strong className="text-foreground">{retailLocation.name}</strong><br />
+                      {retailLocation.address}
+                    </p>
+                  </div>
+                </div>
+              </SpotlightCard>
+            </FadeIn>
+
+            <FadeIn delay={0.3}>
+              <SpotlightCard className="p-8 border-foreground/5 dark:border-white/5 bg-foreground/2 dark:bg-white/2">
+                <div className="flex items-start gap-6">
+                  <div className="p-3 bg-fuchsia-600/10 dark:bg-fuchsia-600/20 text-fuchsia-600 dark:text-fuchsia-400 rounded-xl">
+                    <Clock size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-4">Business Hours</h3>
+                    <div className="space-y-2 text-sm text-secondary font-medium">
+                      <div className="flex justify-between gap-4">
+                        <span className="font-bold text-foreground">Mon — Fri</span>
+                        <span>09:00 AM – 06:00 PM</span>
+                      </div>
+                      <div className="flex justify-between gap-4">
+                        <span className="font-bold text-foreground">Saturday</span>
+                        <span>10:00 AM – 04:00 PM</span>
+                      </div>
+                      <div className="flex justify-between gap-4">
+                        <span className="font-bold text-foreground">Sunday</span>
+                        <span className="text-violet-600 dark:text-violet-500">Closed</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SpotlightCard>
+            </FadeIn>
+          </div>
+
+          {/* Contact Form */}
+          <div className="lg:col-span-7">
+            <FadeIn delay={0.4}>
+              <PremiumCard className="p-8 md:p-12">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-secondary ml-1">Your Name</label>
                       <input
                         type="text"
                         name="name"
-                        id="name"
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-2 border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-3.5 py-3 text-base text-gray-900 dark:text-white shadow-sm focus:border-blue-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-400 touch-manipulation"
+                        placeholder="John Doe"
+                        className="w-full bg-foreground/[0.03] dark:bg-white/5 border border-foreground/10 dark:border-white/10 rounded-xl px-5 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-violet-600 transition-all placeholder:text-secondary opacity-80 focus:opacity-100"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white"
-                    >
-                      Email
-                    </label>
-                    <div className="mt-2.5">
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-secondary ml-1">Email Address</label>
                       <input
                         type="email"
                         name="email"
-                        id="email"
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:focus:border-cyan-400 dark:focus:ring-cyan-400 touch-manipulation"
+                        placeholder="john@example.com"
+                        className="w-full bg-foreground/[0.03] dark:bg-white/5 border border-foreground/10 dark:border-white/10 rounded-xl px-5 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-violet-600 transition-all placeholder:text-secondary opacity-80 focus:opacity-100"
                       />
                     </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white"
-                    >
-                      Phone
-                    </label>
-                    <div className="mt-2.5">
-                      <input
-                        type="tel"
-                        name="phone"
-                        id="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:focus:border-cyan-400 dark:focus:ring-cyan-400 touch-manipulation"
-                      />
-                    </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-secondary ml-1">Subject</label>
+                    <input
+                      type="text"
+                      name="subject"
+                      required
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="How can we help?"
+                      className="w-full bg-foreground/[0.03] dark:bg-white/5 border border-foreground/10 dark:border-white/10 rounded-xl px-5 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-violet-600 transition-all placeholder:text-secondary opacity-80 focus:opacity-100"
+                    />
                   </div>
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white"
-                    >
-                      Subject
-                    </label>
-                    <div className="mt-2.5">
-                      <input
-                        type="text"
-                        name="subject"
-                        id="subject"
-                        required
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:focus:border-cyan-400 dark:focus:ring-cyan-400 touch-manipulation"
-                      />
-                    </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-secondary ml-1">Message</label>
+                    <textarea
+                      name="message"
+                      rows={5}
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us about your project or inquiry..."
+                      className="w-full bg-foreground/[0.03] dark:bg-white/5 border border-foreground/10 dark:border-white/10 rounded-xl px-5 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-violet-600 transition-all placeholder:text-secondary opacity-80 focus:opacity-100 resize-none"
+                    />
                   </div>
-                  <div className="sm:col-span-2">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white"
-                    >
-                      Message
-                    </label>
-                    <div className="mt-2.5">
-                      <textarea
-                        name="message"
-                        id="message"
-                        rows={4}
-                        required
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="block w-full rounded-md border-2 border-gray-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:focus:border-cyan-400 dark:focus:ring-cyan-400 touch-manipulation"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div>
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-md bg-gradient-to-r from-blue-600 to-blue-700 dark:from-gray-700 dark:to-gray-800 px-4 py-3.5 text-center text-base font-semibold text-white shadow-sm hover:from-blue-500 hover:to-blue-600 dark:hover:from-gray-600 dark:hover:to-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:focus-visible:outline-gray-500 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation"
+                    className="w-full bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white font-bold py-5 rounded-xl transition-all flex items-center justify-center gap-3 shadow-xl shadow-violet-600/20"
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        Send Message <Send size={20} />
+                      </>
+                    )}
                   </button>
-                </div>
-                {submitStatus === "success" && (
-                  <p className="mt-4 text-sm text-green-400">
-                    Thank you for your message. We'll get back to you soon!
-                  </p>
-                )}
-                {submitStatus === "error" && (
-                  <p className="mt-4 text-sm text-red-400">
-                    There was an error sending your message. Please try again later.
-                  </p>
-                )}
-              </form>
-              <Meteors number={20} />
-            </div>
+
+                  {submitStatus === "success" && (
+                    <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 rounded-lg animate-fade-in font-medium">
+                      <CheckCircle2 size={20} />
+                      <p className="text-sm">Message sent successfully! We'll be in touch soon.</p>
+                    </div>
+                  )}
+
+                  {submitStatus === "error" && (
+                    <div className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 rounded-lg animate-fade-in font-medium">
+                      <AlertCircle size={20} />
+                      <p className="text-sm">Something went wrong. Please try again later.</p>
+                    </div>
+                  )}
+                </form>
+              </PremiumCard>
+            </FadeIn>
           </div>
-        </FadeIn>
+        </div>
       </div>
     </main>
   );
 }
+

@@ -44,6 +44,9 @@ module.exports = {
           900: '#7f1d1d',
           950: '#450a0a',
         },
+        background: 'rgb(var(--background-start-rgb))',
+        foreground: 'rgb(var(--foreground-rgb))',
+        secondary: 'rgb(var(--text-secondary))',
       },
       animation: {
         meteor: "meteor 5s linear infinite",

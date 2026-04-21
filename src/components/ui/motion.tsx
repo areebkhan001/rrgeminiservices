@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 
 export const FadeIn = ({
   children,
@@ -39,8 +39,9 @@ export const FadeIn = ({
           opacity: 1,
           y: 0,
           transition: {
-            duration: 0.5,
+            duration: 0.8,
             delay: delay,
+            ease: [0.16, 1, 0.3, 1],
           },
         },
       }}
@@ -63,11 +64,11 @@ export const Meteors = ({ number = 20 }: { number?: number }) => {
   }, [number]);
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {meteors.map((meteor) => (
         <span
           key={meteor.id}
-          className="animate-meteor fixed h-0.5 w-0.5 rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10] rotate-[215deg] before:content-[''] before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:w-[50px] before:h-[1px] before:bg-gradient-to-r before:from-[#64748b] before:to-transparent"
+          className="animate-meteor absolute h-0.5 w-0.5 rounded-full bg-violet-500 shadow-[0_0_0_1px_rgba(139,92,246,0.1)] rotate-[215deg] before:content-[''] before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:w-[50px] before:h-[1px] before:bg-gradient-to-r before:from-violet-500 before:to-transparent"
           style={{
             top: 0,
             left: `${meteor.left}%`,
@@ -82,19 +83,71 @@ export const Meteors = ({ number = 20 }: { number?: number }) => {
 
 export const SpotlightCard = ({
   children,
-  className,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+
+    const div = divRef.current;
+    const rect = div.getBoundingClientRect();
+
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleMouseEnter = () => {
+    setOpacity(1);
+  };
+
+  const handleMouseLeave = () => {
+    setOpacity(0);
+  };
+
+  return (
+    <div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative overflow-hidden rounded-2xl border border-white/10 dark:border-white/10 bg-white/40 dark:bg-white/5 p-8 transition-colors ${className}`}
+      style={{
+        borderColor: 'var(--glass-border)',
+        backgroundColor: 'var(--glass-bg)',
+      }}
+    >
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300"
+        style={{
+          opacity,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(var(--accent-primary), 0.15), transparent 40%)`,
+        }}
+      />
+      {children}
+    </div>
+  );
+};
+
+export const PremiumCard = ({
+  children,
+  className = "",
 }: {
   children: React.ReactNode;
   className?: string;
 }) => {
   return (
-    <div
-      className={`relative h-full w-full rounded-3xl ${className}`}
+    <motion.div
+      whileHover={{ y: -5, scale: 1.02 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className={`premium-card p-6 ${className}`}
     >
-      <div className="absolute left-0 top-0 h-full w-full overflow-hidden rounded-3xl">
-        <div className="absolute left-[--x] top-[--y] h-56 w-56 -translate-x-1/2 -translate-y-1/2 transform animate-spotlight opacity-0 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-2xl" />
-      </div>
       {children}
-    </div>
+    </motion.div>
   );
 };
+

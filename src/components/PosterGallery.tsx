@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ExternalLink, Globe2, Phone, Mail } from 'lucide-react';
 
 interface Poster {
   id: string;
@@ -18,28 +18,28 @@ interface Poster {
 const posters: Poster[] = [
   {
     id: 'azerbaijan',
-    title: 'Work Opportunities in Azerbaijan',
-    description: 'Join our growing team in Baku, Azerbaijan. Multiple positions available with attractive salary packages and fast-track visa processing.',
+    title: 'Precision in Azerbaijan',
+    description: 'Strategic opportunities in Baku for technical and management professionals. Comprehensive relocation and visa support included.',
     imageUrl: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&auto=format&fit=crop',
-    tags: ['Warehouse', 'Engineering', 'Management'],
+    tags: ['Strategic', 'Baku', 'Management'],
     ctaText: 'Apply Now',
     ctaLink: '/contact',
   },
   {
     id: 'norway',
-    title: 'Norway Work Permit',
-    description: 'Explore career opportunities in Norway across mechanical, electrical, and warehouse sectors. Experience required.',
+    title: 'Scandinavian Excellence',
+    description: 'High-demand roles in Norways energy and infrastructure sectors. Join a world-class workforce in a premium environment.',
     imageUrl: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&auto=format&fit=crop',
-    tags: ['Norway', 'Work Permit', 'Engineering'],
+    tags: ['Norway', 'Engineering', 'Infrastructure'],
     ctaText: 'Learn More',
     ctaLink: '/contact',
   },
   {
     id: 'europe',
-    title: 'Work Permits: Spain, Croatia & Italy',
-    description: 'Apply for work visas in Spain, Croatia, and Italy. We handle pre-execution, visa application, and post-visa processing.',
+    title: 'European Pathways',
+    description: 'Elite placements across Spain, Croatia, and Italy. We facilitate end-to-end processing for professionals and specialists.',
     imageUrl: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&auto=format&fit=crop',
-    tags: ['Europe', 'Spain', 'Croatia', 'Italy'],
+    tags: ['Spain', 'Croatia', 'Italy'],
     ctaText: 'Get Started',
     ctaLink: '/contact',
   },
@@ -77,115 +77,81 @@ export function PosterGallery() {
           <motion.div
             key={poster.id}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group relative"
+            className="group relative cursor-pointer"
+            onClick={() => openModal(poster, index)}
           >
-            <div className="relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-indigo-500/20">
-              {/* Image Container */}
-              <div className="relative aspect-square overflow-hidden">
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-background border border-foreground/10 dark:border-white/5 hover:border-violet-500/50 transition-all duration-500 shadow-2xl group-hover:shadow-violet-500/10">
+              <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
                   src={poster.imageUrl}
                   alt={poster.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">{poster.title}</h3>
-                    <p className="text-sm text-gray-300 mb-4 line-clamp-2">{poster.description}</p>
-                    <button
-                      onClick={() => openModal(poster, index)}
-                      className="inline-flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
-                      type="button"
-                    >
-                      View Details
-                      <ExternalLink className="w-4 h-4" />
-                    </button>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 dark:from-[#0a0c10] dark:via-[#0a0c10]/40 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {poster.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-violet-500/10 dark:bg-violet-500/20 text-violet-600 dark:text-violet-400 text-[10px] font-black uppercase tracking-wider rounded-full border border-violet-500/20 backdrop-blur-md"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-2 leading-tight group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                      {poster.title}
+                    </h3>
+                    <p className="text-secondary text-sm line-clamp-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 font-medium">
+                      {poster.description}
+                    </p>
+                    <div className="flex items-center gap-2 text-violet-600 dark:text-violet-400 text-sm font-black uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-300">
+                      Explore Opportunity <ChevronRight size={18} />
+                    </div>
                   </div>
                 </div>
               </div>
-
-              {/* Tags */}
-              <div className="p-4">
-                <div className="flex flex-wrap gap-2">
-                  {poster.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-medium rounded-full border border-indigo-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Click to expand hint */}
-            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-              Click to expand
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
         {selectedPoster && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10 bg-background/95 dark:bg-[#0a0c10]/95 backdrop-blur-2xl"
             onClick={closeModal}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: 'spring', duration: 0.5 }}
-              className="relative max-w-6xl w-full max-h-[90vh] overflow-y-auto bg-neutral-900 rounded-2xl border border-neutral-800 shadow-2xl"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="relative max-w-5xl w-full bg-background dark:bg-[#111318] rounded-[2.5rem] border border-foreground/10 dark:border-white/10 shadow-3xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
+              style={{
+                backgroundColor: 'var(--glass-bg)',
+                backdropFilter: 'blur(40px)',
+              }}
             >
-              {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+                className="absolute top-6 right-6 z-20 bg-foreground/5 dark:bg-white/5 hover:bg-foreground/10 dark:hover:bg-white/10 text-foreground dark:text-white p-3 rounded-full backdrop-blur-md border border-foreground/10 dark:border-white/10 transition-all"
                 type="button"
-                aria-label="Close"
               >
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Navigation buttons */}
-              {posters.length > 1 && (
-                <>
-                  <button
-                    onClick={prevPoster}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
-                    type="button"
-                    aria-label="Previous poster"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button
-                    onClick={nextPoster}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
-                    type="button"
-                    aria-label="Next poster"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                </>
-              )}
-
-              {/* Content */}
-              <div className="grid md:grid-cols-2 gap-8 p-8">
-                {/* Image */}
-                <div className="relative aspect-square overflow-hidden rounded-xl">
+              <div className="grid md:grid-cols-2 h-full gap-0">
+                <div className="relative aspect-square md:aspect-auto h-full min-h-[400px]">
                   <Image
                     src={selectedPoster.imageUrl}
                     alt={selectedPoster.title}
@@ -193,85 +159,71 @@ export function PosterGallery() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background dark:to-[#111318] hidden md:block" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background dark:from-[#111318] to-transparent md:hidden" />
                 </div>
 
-                {/* Details */}
-                <div className="flex flex-col justify-center">
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {selectedPoster.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-4 py-2 bg-indigo-500/10 text-indigo-400 text-sm font-medium rounded-full border border-indigo-500/20"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                      {selectedPoster.title}
-                    </h2>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                      {selectedPoster.description}
-                    </p>
-                  </div>
-
-                  {selectedPoster.ctaLink && (
-                    <div className="mt-8">
-                      <a
-                        href={selectedPoster.ctaLink}
-                        className="inline-flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-colors shadow-lg shadow-indigo-500/20"
+                <div className="p-8 md:p-16 flex flex-col justify-center">
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {selectedPoster.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-1.5 text-xs font-black uppercase tracking-tighter text-violet-600 dark:text-white bg-violet-500/10 dark:bg-violet-500/20 border border-violet-500/20 dark:border-violet-500/30 rounded-full"
                       >
-                        {selectedPoster.ctaText || 'Learn More'}
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    </div>
-                  )}
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+                    {selectedPoster.title}
+                  </h2>
+                  <p className="text-secondary text-lg leading-relaxed mb-10 font-medium">
+                    {selectedPoster.description}
+                  </p>
 
-                  {/* Contact info */}
-                  <div className="mt-8 p-6 bg-neutral-800/50 rounded-xl border border-neutral-700">
-                    <h3 className="text-lg font-semibold text-white mb-3">Get in Touch</h3>
-                    <div className="space-y-2 text-gray-300">
-                      <p className="flex items-center gap-2">
-                        <span className="text-indigo-400">📞</span>
-                        <a href="tel:+60172391700" className="hover:text-indigo-400 transition-colors">
-                          +60 17 239 1700
-                        </a>
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <span className="text-indigo-400">📧</span>
-                        <a href="mailto:info@rrgeminiservices.com" className="hover:text-indigo-400 transition-colors">
-                          info@rrgeminiservices.com
-                        </a>
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <span className="text-indigo-400">🌐</span>
-                        <a href="https://rrgeminiservices.com" className="hover:text-indigo-400 transition-colors">
-                          rrgeminiservices.com
-                        </a>
-                      </p>
+                  <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a
+                      href={selectedPoster.ctaLink}
+                      className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-8 py-4 rounded-2xl text-lg font-bold transition-all shadow-xl shadow-violet-600/20"
+                    >
+                      {selectedPoster.ctaText || 'Apply Now'}
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-10 border-t border-foreground/10 dark:border-white/5">
+                    <div>
+                      <h4 className="text-foreground font-bold mb-2 flex items-center gap-2">
+                        <Phone size={16} className="text-violet-600 dark:text-violet-500" /> WhatsApp
+                      </h4>
+                      <p className="text-secondary text-sm font-medium">+60 11-23377911</p>
+                    </div>
+                    <div>
+                      <h4 className="text-foreground font-bold mb-2 flex items-center gap-2">
+                        <Mail size={16} className="text-violet-600 dark:text-violet-500" /> Email
+                      </h4>
+                      <p className="text-secondary text-sm font-medium">info@rrgemini.com</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Pagination indicator */}
-              <div className="flex justify-center gap-2 pb-6">
-                {posters.map((poster, index) => (
-                  <button
-                    key={poster.id}
-                    onClick={() => {
-                      setCurrentIndex(index);
-                      setSelectedPoster(posters[index]);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex ? 'bg-indigo-500 w-8' : 'bg-neutral-600'
-                    }`}
-                    type="button"
-                    aria-label={`Go to poster ${index + 1}`}
-                  />
-                ))}
-              </div>
+              {posters.length > 1 && (
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-8 hidden md:flex">
+                  <button onClick={prevPoster} className="text-foreground/40 dark:text-white/40 hover:text-foreground dark:hover:text-white transition-colors">
+                    <ChevronLeft size={32} />
+                  </button>
+                  <div className="flex gap-2">
+                    {posters.map((_, i) => (
+                      <div key={i} className={`w-2 h-2 rounded-full ${i === currentIndex ? 'bg-violet-600 dark:bg-violet-500 w-8' : 'bg-foreground/10 dark:bg-white/10'} transition-all`} />
+                    ))}
+                  </div>
+                  <button onClick={nextPoster} className="text-foreground/40 dark:text-white/40 hover:text-foreground dark:hover:text-white transition-colors">
+                    <ChevronRight size={32} />
+                  </button>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -279,3 +231,4 @@ export function PosterGallery() {
     </>
   );
 }
+
